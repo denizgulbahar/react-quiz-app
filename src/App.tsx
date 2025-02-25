@@ -1,26 +1,31 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import QuestionCard, { AnswerObject } from './components/questionCard';
+
 function App() {
-  const [count, setCount] = useState(0)
+  const question = "What is the capital of France?";
+  const answers = ["Berlin", "Madrid", "Paris", "Rome"];
+  const totalQuestions = 5;
+  const questionNr = 1;
+  const [userAnswer, setUserAnswer] = useState<AnswerObject | undefined>(undefined);
+
+  const handleAnswerClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const selectedAnswer = e.currentTarget.innerText;
+    setUserAnswer({ answer: selectedAnswer, correct: selectedAnswer === "Paris" });
+    console.log("deno")
+  };
 
   return (
-    <div className="bg-custom bg-cover">
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+    <div className="bg-custom h-screen flex flex-col items-center justify-center" style={{ padding: 20, borderRadius: 20}}>
+
+      <h1>Quiz App</h1>
+      <QuestionCard 
+        question={question} 
+        answers={answers} 
+        callback={handleAnswerClick} 
+        userAnswer={userAnswer} 
+        questionNr={questionNr} 
+        totalQuestions={totalQuestions} 
+      />
     </div>
   )
 }
