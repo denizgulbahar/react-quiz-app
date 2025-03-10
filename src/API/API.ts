@@ -1,21 +1,11 @@
+import { Question, QuestionsState } from '../types/API';
 import { shuffleAnswers } from '../utilities/shuffleAnswers';
 
-export type Question = {
-    category: string;
-    correct_answer: string;
-    difficulty: string;
-    incorrect_answers: string[];
-    question: string;
-    type: string;
-};
-  
 export enum Difficulty {
     EASY = "easy",
     MEDIUM = "medium",
     HARD = "hard",
 }
-// Adds the answers property to the Question type as an array of strings.
-export type QuestionsState = Question & { answers: string[] };
 
 export const fetchQuizQuestions = async (
     amount: number,
