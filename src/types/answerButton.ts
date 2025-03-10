@@ -1,5 +1,5 @@
 
-export type ButtonWrapper ={
+export type ButtonWrapperType ={
     correct: boolean;
     userClicked: boolean;
     children: React.ReactNode; 
@@ -7,7 +7,7 @@ export type ButtonWrapper ={
     disabled?: boolean;
 }
   
-export type AnswerButton = {
+export type AnswerButtonType = {
     answer: string;
     callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
     userAnswer?: { answer: string; correctAnswer: string };

@@ -1,8 +1,8 @@
 import React from 'react';
-import { QuestionCard } from '../types/questionCard';
+import { QuestionCardType } from '../../types/questionCard';
 
-import AnswerButton from './questionCard/children/answerButton';
-import { Wrapper } from './questionCard/children/wrapper';
+import AnswerButton from './children/AnswerButton';
+import { Wrapper } from './children/Wrapper';
 
 const QuestionCard = ({
   question,
@@ -11,9 +11,8 @@ const QuestionCard = ({
   userAnswer,
   questionNr = 1,
   totalQuestions = 1,
-}: QuestionCard) => {
+}: QuestionCardType) => {
   return (
-    <>
     <Wrapper>
       <p className='number'>
         Question: {questionNr} / {totalQuestions}
@@ -25,7 +24,6 @@ const QuestionCard = ({
         ))}
       </>
     </Wrapper>
-    </>
   );
 };
 

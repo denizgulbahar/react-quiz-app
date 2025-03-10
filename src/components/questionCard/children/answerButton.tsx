@@ -1,7 +1,7 @@
 import React from 'react';
-import { AnswerButton, ButtonWrapper } from '../../../types/answerButton';
+import { AnswerButtonType, ButtonWrapperType } from '../../../types/answerButton';
 
-const ButtonWrapper: React.FC<ButtonWrapper> = ({ correct, userClicked, children, onClick, disabled }) => {
+const ButtonWrapper: React.FC<ButtonWrapperType> = ({ correct, userClicked, children, onClick, disabled }) => {
   const bgClasses = {
     correct: 'bg-gradient-to-r from-[#56FFA4] to-[#59BC86]',
     wrong: 'bg-gradient-to-r from-[#FF5656] to-[#C16868]',
@@ -24,7 +24,8 @@ const ButtonWrapper: React.FC<ButtonWrapper> = ({ correct, userClicked, children
   );
 };
 
-const AnswerButton: React.FC<AnswerButton> = ({ answer, callback, userAnswer }) => {
+
+const AnswerButton: React.FC<AnswerButtonType> = ({ answer, callback, userAnswer }) => {
   const isCorrect = userAnswer?.correctAnswer === answer;
   const isClicked = userAnswer?.answer === answer;
 

@@ -1,10 +1,10 @@
-interface AnswerObject {
+export interface AnswerObject {
     question: string;
     answer: string;
     correct: boolean;
     correctAnswer: string;
 };
-export type QuestionCard = {
+export type QuestionCardType = {
     question: string;
     answers: string[];
     callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
