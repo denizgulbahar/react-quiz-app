@@ -24,7 +24,6 @@ const ButtonWrapper: React.FC<ButtonWrapperType> = ({ correct, userClicked, chil
   );
 };
 
-
 const AnswerButton: React.FC<AnswerButtonType> = ({ answer, callback, userAnswer }) => {
   const isCorrect = userAnswer?.correctAnswer === answer;
   const isClicked = userAnswer?.answer === answer;

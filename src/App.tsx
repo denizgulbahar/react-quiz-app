@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { fetchQuizQuestions } from './API/API';
 // Components
 import QuestionCard from './components/questionCard/QuestionCard';
@@ -39,12 +39,11 @@ const App: React.FC = () => {
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (gameOver) return;
-
-    const answer = e.currentTarget.value;
+    const answer = (e.target as HTMLElement).textContent?.trim() || ""
     const correct = questions[number].correct_answer === answer;
 
     if (correct) {
-      setScore((prev) => prev + 1);
+      setScore((prev) => prev + 10);
     }
 
     const answerObject: AnswerObject = {
@@ -61,15 +60,21 @@ const App: React.FC = () => {
 
     if (nextQ === TOTAL_QUESTIONS) {
       setGameOver(true);
+     
     } else {
       setNumber(nextQ);
     }
   };
 
-  return (
-    <div className="wrapper">
-      <h1>REACT QUIZ</h1>
+  const isNextQuestionButtonVisible = 
+    !gameOver &&  
+    !loading &&  
+    userAnswers.length === number + 1 &&  
+    number !== TOTAL_QUESTIONS - 1;
 
+  return (
+    <div className="wrapper gap-8">
+      <h1>REACT QUIZ</h1>
       {(gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
         <button className="start" onClick={startTrivia}>
           Start
@@ -91,7 +96,7 @@ const App: React.FC = () => {
         />
       )}
 
-      {!gameOver && !loading && userAnswers.length === number + 1 && number !== TOTAL_QUESTIONS - 1 && (
+      {isNextQuestionButtonVisible && (
         <button className="next" onClick={nextQuestion}>
           Next Question
         </button>

@@ -8,9 +8,12 @@ export const Wrapper: React.FC<{ children: React.ReactNode }> = ({ children }) =
         border-2 
         border-[#0085a3] 
         p-5
+        flex-col
         shadow-md 
         text-center
-      ">
+      "
+      style={{ padding: '20px' }}
+    >
       {children}
     </div>
   );

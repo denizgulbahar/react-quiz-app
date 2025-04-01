@@ -14,15 +14,15 @@ const QuestionCard = ({
 }: QuestionCardType) => {
   return (
     <Wrapper>
-      <p className='number'>
+      <p className='number p-5'>
         Question: {questionNr} / {totalQuestions}
       </p>
       <p dangerouslySetInnerHTML={{ __html: question }} />
-      <>
+      <div className="flex flex-col">
         {answers.map((answer) => (
           <AnswerButton key={answer} answer={answer} callback={callback} userAnswer={userAnswer} />
         ))}
-      </>
+      </div>
     </Wrapper>
   );
 };

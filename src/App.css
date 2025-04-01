@@ -48,7 +48,10 @@
   }
 
   .start, .next {
-    @apply cursor-pointer bg-gradient-to-b from-white to-orange-200 border-2 border-yellow-500 shadow-md rounded-xl h-10 my-5 px-10;
+    @apply cursor-pointer bg-gradient-to-b from-yellow-100 
+    to-orange-300 border-2 border-yellow-600 shadow-lg rounded-2xl h-12 my-5 
+    px-4 py-[7px] text-lg font-bold leading-none w-80 transition-all duration-200 
+    hover:scale-105 hover:shadow-xl;
   }
 
   .start {
