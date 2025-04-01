@@ -7,6 +7,7 @@ import { QuestionsState } from './types/API';
 import { AnswerObject } from './types/questionCard';
 import { Difficulty } from './API/API';
 import './App.css'
+import LoadingIndicator from './components/LoadingIndicator';
 
 const TOTAL_QUESTIONS = 10;
 
@@ -28,6 +29,7 @@ const App: React.FC = () => {
     setLoading(true);
     setGameOver(false);
     try {
+      // Fetch new trivia questions based on total questions and difficulty level
       const newQuestions = await fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
       setQuestions(newQuestions);
       resetGame();
@@ -83,7 +85,7 @@ const App: React.FC = () => {
 
       {!gameOver && <p className="score">Score: {score}</p>}
 
-      {loading && <p>Loading Questions...</p>}
+      {loading && <LoadingIndicator />}
 
       {!loading && !gameOver && (
         <QuestionCard

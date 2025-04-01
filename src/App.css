@@ -3,20 +3,19 @@
 @import "tailwindcss";
 
 @layer base {
-  html {
+  html, body {
     height: 100%;
+    margin: 0;
   }
 
   body {
     background-image: url('./images/background.jpg');
     background-size: cover;
-    margin: 0;
     padding: 0 20px;
     display: flex;
     justify-content: center;
     font-family: 'Catamaran', sans-serif;
   }
-
   * {
     box-sizing: border-box;
   }
@@ -24,17 +23,49 @@
 
 @layer components {
   .wrapper {
-    @apply flex flex-col items-center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vw;
   }
-
   .wrapper p {
     @apply text-white;
   }
-
+  .card-wrapper {
+    min-width: 60vw;
+    background-color: #4b5563;
+    border-radius: 0.5rem;
+    border: 2px solid #0085a3;
+    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  /* Loading Component */
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .spinner {
+    border: 4px solid #f3f3f3; /* Gray background */
+    border-top: 4px solid #3498db; /* Blue top border */
+    border-radius: 50%; /* Circular shape */
+    width: 50px; /* Spinner size */
+    height: 50px;
+    animation: spin 1s linear infinite; /* Rotation animation */
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
   .score {
     @apply text-white text-2xl m-0;
   }
-
   h1 {
     @apply text-7xl text-center my-5;
     background-image: linear-gradient(180deg, #fff, #87f1ff);
@@ -46,14 +77,17 @@
     -moz-text-fill-color: transparent;
     filter: drop-shadow(2px 2px #0085a3);
   }
-
+  /* Start Next Buttons */
   .start, .next {
     @apply cursor-pointer bg-gradient-to-b from-yellow-100 
     to-orange-300 border-2 border-yellow-600 shadow-lg rounded-2xl h-12 my-5 
     px-4 py-[7px] text-lg font-bold leading-none w-80 transition-all duration-200 
     hover:scale-105 hover:shadow-xl;
   }
-
+  .next {
+    position: absolute;
+    bottom: 30px; 
+  }
   .start {
     @apply max-w-xs;
   }
